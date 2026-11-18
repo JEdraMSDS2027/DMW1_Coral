@@ -1,0 +1,6 @@
+component,variance_percent,leading_families,strongest_variables
+PC1,29.956779652104643,Degree heating weeks (DHW): 42.6%; Anomaly frequency: 32.9%; SSTA (SST anomaly): 11.4%,SSTA_DHW_Standard_Deviation (+0.94); SSTA_DHWMean (+0.90); SSTA_DHWMax (+0.87); SSTA_FrequencyMean (+0.85); TSA_DHW_Standard_Deviation (+0.82)
+PC2,16.760194004132305,TSA (thermal stress anomaly): 27.2%; Sea surface temperature (SST): 26.1%; Anomaly frequency: 16.6%,TSA_Mean (+0.91); Temperature_Minimum (+0.88); Temperature_Kelvin_Standard_Deviation (-0.86); TSA_Minimum (+0.85); Temperature_Mean (+0.78)
+PC3,9.430232380259913,Sea surface temperature (SST): 26.7%; Degree heating weeks (DHW): 22.3%; TSA (thermal stress anomaly): 20.1%,Temperature_Kelvin (+0.84); TSA (+0.80); SSTA (+0.63); SSTA_DHW (+0.58); TSA_DHW (+0.54)
+PC4,7.20848765081872,Sea surface temperature (SST): 32.5%; Anomaly frequency: 25.8%; Degree heating weeks (DHW): 21.8%,TSA_Frequency (+0.61); ClimSST (-0.54); Temperature_Maximum (-0.51); TSA_DHW (+0.50); SSTA_DHW (+0.46)
+PC5,5.675236210242077,Anomaly frequency: 36.7%; SSTA (SST anomaly): 21.7%; TSA (thermal stress anomaly): 17.2%,SSTA_Frequency_Standard_Deviation (+0.58); TSA_Maximum (-0.58); SSTA_FrequencyMax (+0.57); SSTA_Maximum (-0.50); Temperature_Maximum (-0.40)

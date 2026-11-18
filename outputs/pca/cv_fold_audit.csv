@@ -1,0 +1,11 @@
+mode,fold,train_samples,test_samples,shared_sites
+legacy_global_fit,1,18455,4614,0
+legacy_global_fit,2,18455,4614,0
+legacy_global_fit,3,18455,4614,0
+legacy_global_fit,4,18455,4614,0
+legacy_global_fit,5,18456,4613,0
+fold_fitted,1,18455,4614,0
+fold_fitted,2,18455,4614,0
+fold_fitted,3,18455,4614,0
+fold_fitted,4,18455,4614,0
+fold_fitted,5,18456,4613,0

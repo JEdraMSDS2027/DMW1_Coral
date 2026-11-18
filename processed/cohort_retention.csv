@@ -1,6 +1,6 @@
-stage,rows,removed_from_previous
-Raw substrate records,41361,0
-One row per Sample_ID,27005,14356
-Observed bleaching outcome,23271,3734
-Sampling year >= 1998,23126,145
-At most 50% of environmental inputs missing,23069,57
+stage,unit,retained_count,rule,removed_or_consolidated_count,removed_percent_of_entering_events,retained_percent_of_entering_events,record_reduction_percent,percent_of_distinct_events
+Raw observations,substrate records,41361,Source dataset,0,,,,
+Consolidated sampling events,sampling events,27005,One event per Sample_ID,14356,,,34.709025410410774,100.0
+Observed bleaching outcome,sampling events,23271,Exclude missing outcomes; do not impute,3734,13.827069061284947,86.17293093871506,,86.17293093871506
+Sampling year 1998 onward,sampling events,23126,Exclude 1997 and earlier,145,0.6230931201925143,99.37690687980749,,85.63599333456767
+Complete enough environmental profile,sampling events,23069,Exclude >50% missing inputs,57,0.24647582807229956,99.7535241719277,,85.42492131086836

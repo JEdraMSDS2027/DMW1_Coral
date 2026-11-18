@@ -74,6 +74,63 @@ def load_raw(path):
     return frame
 
 
+def load_pca_inputs(root):
+    """Load the combined export and its exact ordered 35-feature metadata list.
+
+    No numeric inference, imputation, or automatic rescaling is performed here.
+    Categories and comments remain in the returned combined table.
+    """
+    import numpy as np
+
+    output = Path(root) / "processed"
+    metadata = json.loads((output / "coral_preprocessing_metadata.json").read_text(encoding="utf-8"))
+    features = metadata.get("pca_input_columns", [])
+    if len(features) != 35 or len(set(features)) != 35:
+        raise ValueError("Preprocessing metadata must specify 35 unique ordered PCA inputs.")
+    frame = pd.read_csv(output / "coral_pca_ready.csv", low_memory=False)
+    required = features + IDENTIFIERS + DATE_COLUMNS + GEO_COLUMNS + [
+        TARGET, "Bleaching_Group", "Depth_m_was_missing", "Data_Source", "Exposure",
+        "Ocean_Name", "Realm_Name", "Country_Name", "Ecoregion_Name",
+    ]
+    missing = sorted(set(required) - set(frame))
+    if missing:
+        raise ValueError(f"PCA input table is missing required columns: {missing}")
+    excluded = set(metadata.get("interpretation_columns_not_for_pca", []))
+    if excluded.intersection(features) or not set(features).issubset(ENVIRONMENTAL_COLUMNS):
+        raise ValueError("Invalid feature roles in preprocessing metadata.")
+    values = frame[features]
+    if not all(pd.api.types.is_numeric_dtype(values[name]) for name in features):
+        raise ValueError("All PCA inputs must be numeric.")
+    if not np.isfinite(values.to_numpy()).all() or values.nunique().le(1).any():
+        raise ValueError("PCA inputs contain missing, infinite, or constant values.")
+    if not np.allclose(values.mean(), 0, atol=1e-6) or not np.allclose(values.std(ddof=0), 1, atol=1e-6):
+        raise ValueError("Inputs are not standardised; rerun preprocessing instead of scaling silently.")
+    from .cleaning import validate_dates
+    frame = validate_dates(frame)
+    if (not frame.Sample_ID.is_unique or frame.Sample_ID.isna().any()
+            or frame.Site_ID.isna().any() or not frame.Date_Year.ge(1998).all()
+            or not frame.Bleaching_Group.isin(GROUP_LABELS).all()):
+        raise ValueError("Invalid sampling events, groups, or 1998-onward cohort.")
+    expected = pd.cut(frame[TARGET], [0, 10, 50, 100], labels=GROUP_LABELS, include_lowest=True)
+    if not expected.astype(str).eq(frame.Bleaching_Group).all():
+        raise ValueError("Bleaching outcomes and groups disagree.")
+    return frame, values.copy(), metadata
+
+
+def load_cv_measurements(root, samples, features):
+    """Recover missing original-unit inputs for fold-specific preprocessing in CV.
+
+    Cohort eligibility and the study's 35 named variables remain fixed. Medians,
+    skew decisions, power parameters, scaling and PCA must be fitted inside folds.
+    """
+    from .cleaning import normalise_types, collapse_samples
+    typed, _ = normalise_types(load_raw(Path(root) / "coral.csv"))
+    raw_samples, _, _ = collapse_samples(typed)
+    aligned = raw_samples.set_index("Sample_ID").loc[samples.Sample_ID, features].copy()
+    aligned.index = samples.index
+    return aligned
+
+
 def load_dictionary(path):
     """Read the supplied fixed-width Markdown dictionary into descriptions and units."""
     entries, spans, current = {}, None, None
@@ -199,12 +256,12 @@ def preprocessing_metadata(roles, transformations, retention, max_missing_fracti
         "power_transformed": transformations.loc[transformations.method.eq("yeo-johnson"), "feature"].tolist(),
         "standardised_only": transformations.loc[~transformations.method.eq("yeo-johnson"), "feature"].tolist(),
         "transformations": json.loads(transformations.to_json(orient="records", double_precision=15)),
-        "cohort_retention": retention.to_dict(orient="records"),
+        "cohort_retention": json.loads(retention.to_json(orient="records", double_precision=15)),
         "limitations": [
             "Outcome-based exclusion preserves the original research cohort but can introduce selection bias.",
             "Several events may share a site; one row per event does not establish statistical independence.",
             "Median imputation can alter covariance; source-related depth missingness is retained in metadata.",
-            "Day-of-month concentration suggests limited day precision; prefer year and month for interpretation.",
+            "Source documentation substitutes day 15 when sampling day is unknown; prefer year and month for interpretation.",
             "Repeated thermal-summary families retain unequal weighting; zero-heavy inputs need not become normal.",
             "Historical summary windows may include later observations; assess temporal availability before prediction.",
             "Windspeed units in the supplied dictionary require verification before physical interpretation.",

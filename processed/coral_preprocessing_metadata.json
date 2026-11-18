@@ -518,40 +518,77 @@
   ],
   "cohort_retention": [
     {
-      "stage": "Raw substrate records",
-      "rows": 41361,
-      "removed_from_previous": 0
+      "stage": "Raw observations",
+      "unit": "substrate records",
+      "retained_count": 41361,
+      "rule": "Source dataset",
+      "removed_or_consolidated_count": 0,
+      "removed_percent_of_entering_events": null,
+      "retained_percent_of_entering_events": null,
+      "record_reduction_percent": null,
+      "percent_of_distinct_events": null
     },
     {
-      "stage": "One row per Sample_ID",
-      "rows": 27005,
-      "removed_from_previous": 14356
+      "stage": "Consolidated sampling events",
+      "unit": "sampling events",
+      "retained_count": 27005,
+      "rule": "One event per Sample_ID",
+      "removed_or_consolidated_count": 14356,
+      "removed_percent_of_entering_events": null,
+      "retained_percent_of_entering_events": null,
+      "record_reduction_percent": 34.709025410410774,
+      "percent_of_distinct_events": 100.0
     },
     {
       "stage": "Observed bleaching outcome",
-      "rows": 23271,
-      "removed_from_previous": 3734
+      "unit": "sampling events",
+      "retained_count": 23271,
+      "rule": "Exclude missing outcomes; do not impute",
+      "removed_or_consolidated_count": 3734,
+      "removed_percent_of_entering_events": 13.827069061284947,
+      "retained_percent_of_entering_events": 86.17293093871506,
+      "record_reduction_percent": null,
+      "percent_of_distinct_events": 86.17293093871506
     },
     {
-      "stage": "Sampling year >= 1998",
-      "rows": 23126,
-      "removed_from_previous": 145
+      "stage": "Sampling year 1998 onward",
+      "unit": "sampling events",
+      "retained_count": 23126,
+      "rule": "Exclude 1997 and earlier",
+      "removed_or_consolidated_count": 145,
+      "removed_percent_of_entering_events": 0.623093120192514,
+      "retained_percent_of_entering_events": 99.37690687980749,
+      "record_reduction_percent": null,
+      "percent_of_distinct_events": 85.63599333456767
     },
     {
-      "stage": "At most 50% of environmental inputs missing",
-      "rows": 23069,
-      "removed_from_previous": 57
+      "stage": "Complete enough environmental profile",
+      "unit": "sampling events",
+      "retained_count": 23069,
+      "rule": "Exclude >50% missing inputs",
+      "removed_or_consolidated_count": 57,
+      "removed_percent_of_entering_events": 0.2464758280723,
+      "retained_percent_of_entering_events": 99.7535241719277,
+      "record_reduction_percent": null,
+      "percent_of_distinct_events": 85.42492131086836
     }
   ],
   "limitations": [
     "Outcome-based exclusion preserves the original research cohort but can introduce selection bias.",
     "Several events may share a site; one row per event does not establish statistical independence.",
     "Median imputation can alter covariance; source-related depth missingness is retained in metadata.",
-    "Day-of-month concentration suggests limited day precision; prefer year and month for interpretation.",
+    "Source documentation substitutes day 15 when sampling day is unknown; prefer year and month for interpretation.",
     "Repeated thermal-summary families retain unequal weighting; zero-heavy inputs need not become normal.",
     "Historical summary windows may include later observations; assess temporal availability before prediction.",
     "Windspeed units in the supplied dictionary require verification before physical interpretation."
   ],
+  "dataset_provenance": {
+    "doi": "10.26008/1912/bco-dmo.773466.2",
+    "version": 2,
+    "archive_filename": "global_bleaching_environmental.csv",
+    "verified_md5": "42a6f10a6efa9e6b926d04b86b45a19f",
+    "paper_doi": "10.1038/s41597-022-01121-y"
+  },
   "source_file": "coral.csv",
   "source_sha256": "78cc014b1e7887f26f4c44a40d4d9213212f3c6217541c6a1b69e723b61bfacb",
   "rows": 23069,
@@ -708,7 +745,7 @@
     "high_correlation_pairs.csv": "edf603a8870352cb489d796f933ad5c85b155f62c0fb7ad9f26d675792bcd699",
     "missingness_before_imputation.csv": "44c8dda4462735f805dd39bcf9a2377e0db4349bfa6c0095345758ef9be78c1d",
     "sparse_event_exclusions.csv": "f65a3f087263261b5c52d36a6443b3cefb100c441c64b0a5fc494a95e2780b26",
-    "cohort_retention.csv": "d150f122345f366aa172ed216cd70b59b063e8f8e184a7976226127ea546770c",
+    "cohort_retention.csv": "cd5f230e2fa9ce5864eb159e113bef7d0eefcf6c52314d967813e435d263cb5d",
     "year_exclusions.csv": "9059f6514413fe932c9c8980e9668bdc38b29a7095d2ca5397f0f79843f4c1a8",
     "coral_substrate_records.csv": "60194c69aee5cc9945fbaad7e8495a7d0b2bb1143d6485cf1ea28777e24f527c",
     "transformation_audit.csv": "97cce3c34e4a6d907c10691e118b9a1c69132fc129186f0e093d22457d17f657",

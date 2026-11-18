@@ -1,0 +1,5 @@
+item,value
+pruned_variance_percent,65.01459439138605
+full_variance_percent,69.03092989755766
+extreme_samples,261
+extreme_by_group,"{'Low': 152, 'Moderate': 66, 'High': 43}"

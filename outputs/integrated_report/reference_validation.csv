@@ -1,0 +1,7 @@
+check,status,max_absolute_difference
+Eigenvalues,pass,0.0
+Oriented loadings,pass,0.0
+Component Cliff delta,pass,0.0
+Component Cohen d,pass,0.0
+Hotelling squared distances,pass,0.0
+Within-source PC3/PC4 delta,pass,0.0

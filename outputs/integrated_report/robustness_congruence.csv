@@ -1,0 +1,16 @@
+check,component,congruence,minimum_congruence,matching_component,absolute_delta
+random site halves (12 refits),PC1,0.9993859733184074,0.9984081031676069,,
+random site halves (12 refits),PC2,0.9994237767835171,0.9988422283180919,,
+random site halves (12 refits),PC3,0.9986394002332304,0.9977902874361402,,
+random site halves (12 refits),PC4,0.9947481931432897,0.9835798810348394,,
+random site halves (12 refits),PC5,0.9913878315736336,0.9815630867981142,,
+correlation pruning (29 inputs),PC1,0.9965723168693922,,PC1,0.11354020427989941
+correlation pruning (29 inputs),PC2,0.9938066614294734,,PC2,0.17066290883343394
+correlation pruning (29 inputs),PC3,0.9785429014791013,,PC3,0.46158302663102213
+correlation pruning (29 inputs),PC4,0.9821775981740757,,PC4,0.4142945140686529
+correlation pruning (29 inputs),PC5,0.9392273547658891,,PC5,0.22573412324965125
+exclude |score| > 10,PC1,0.9941131842888768,,PC1,
+exclude |score| > 10,PC2,0.9996421237119447,,PC2,
+exclude |score| > 10,PC3,0.9871227587101421,,PC3,
+exclude |score| > 10,PC4,0.984859352300683,,PC4,
+exclude |score| > 10,PC5,0.9816625890913228,,PC5,
