@@ -1,0 +1,34 @@
+check,passed
+bleaching between 0 and 100,True
+cover between 0 and 100,True
+latitude in range,True
+longitude in range,True
+Distance_to_Shore nonnegative,True
+Turbidity nonnegative,True
+Cyclone_Frequency nonnegative,True
+Depth_m nonnegative,True
+ClimSST positive Kelvin,True
+Temperature_Kelvin positive Kelvin,True
+Temperature_Mean positive Kelvin,True
+Temperature_Minimum positive Kelvin,True
+Temperature_Maximum positive Kelvin,True
+Temperature_Kelvin_Standard_Deviation nonnegative,True
+Windspeed nonnegative,True
+SSTA_Standard_Deviation nonnegative,True
+SSTA_Frequency nonnegative,True
+SSTA_Frequency_Standard_Deviation nonnegative,True
+SSTA_FrequencyMax nonnegative,True
+SSTA_FrequencyMean nonnegative,True
+SSTA_DHW nonnegative,True
+SSTA_DHW_Standard_Deviation nonnegative,True
+SSTA_DHWMax nonnegative,True
+SSTA_DHWMean nonnegative,True
+TSA_Standard_Deviation nonnegative,True
+TSA_Frequency nonnegative,True
+TSA_Frequency_Standard_Deviation nonnegative,True
+TSA_FrequencyMax nonnegative,True
+TSA_FrequencyMean nonnegative,True
+TSA_DHW nonnegative,True
+TSA_DHW_Standard_Deviation nonnegative,True
+TSA_DHWMax nonnegative,True
+TSA_DHWMean nonnegative,True

@@ -1,0 +1,6 @@
+measure,value
+Raw rows,41361
+Exact duplicate rows removed,0
+Distinct sampling events,27005
+Events with differing recorded outcomes (averaged),8
+Events identical on non-ID fields (retained),30

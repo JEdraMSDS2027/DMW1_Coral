@@ -1,0 +1,6 @@
+stage,rows,removed_from_previous
+Raw substrate records,41361,0
+One row per Sample_ID,27005,14356
+Observed bleaching outcome,23271,3734
+Sampling year >= 1998,23126,145
+At most 50% of environmental inputs missing,23069,57

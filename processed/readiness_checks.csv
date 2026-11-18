@@ -1,0 +1,21 @@
+check,passed
+Feature list is nonempty and unique,True
+No metadata or outcome in the feature matrix,True
+Every feature has a numeric dtype,True
+No missing or infinite feature values,True
+No constant feature,True
+All feature means within 1e-6 of zero,True
+All population standard deviations within 1e-6 of one,True
+One complete Sample_ID per row,True
+Complete Site_ID values,True
+No missing or out-of-range bleaching outcomes,True
+Bleaching groups match the declared cut-points,True
+Depth imputation flag is binary,True
+Cleaned and standardised rows align,True
+All non-PCA fields are unchanged by transformation,True
+"Dates agree with year, month, and day",True
+Latitude and longitude remain in valid ranges,True
+More observations than inputs,True
+Cleaned and standardised schemas match,True
+All sample-level source columns are preserved,True
+All events sampled from 1998 onward,True

@@ -1,0 +1,63 @@
+column,role,reason,in_sample_table,in_pca_input,description,units
+Site_ID,Identifier,Trace records; exclude from environmental inputs.,True,False,Unique identifier for each site.,Unitless
+Sample_ID,Identifier,Trace records; exclude from environmental inputs.,True,False,Unique identifier for each sampling event.,Unitless
+Data_Source,Category (retained),Keep as metadata; no numeric encoding is assumed.,True,False,Source of dataset.,Unitless
+Latitude_Degrees,Interpretation,Retain date or location; exclude from environmental inputs.,True,False,Latitude coordinates; positive values indicate North and negative values indicate South.,Degrees North
+Longitude_Degrees,Interpretation,Retain date or location; exclude from environmental inputs.,True,False,Longitude coordinates; positive values indicate East and negative values indicate West.,Degrees East
+Ocean_Name,Category (retained),Keep as metadata; no numeric encoding is assumed.,True,False,Ocean in which sampling took place.,Unitless
+Reef_ID,Category (retained),Keep as metadata; no numeric encoding is assumed.,True,False,Unique identifier from Reef Check data.,Unitless
+Realm_Name,Category (retained),Keep as metadata; no numeric encoding is assumed.,True,False,"Realm as defined by the Marine Ecoregions of the World (MEOW), Spalding et al. (2007).",Unitless
+Ecoregion_Name,Category (retained),Keep as metadata; no numeric encoding is assumed.,True,False,Ecoregion (150 ecoregions) as defined by Veron et al.,Unitless
+Country_Name,Category (retained),Keep as metadata; no numeric encoding is assumed.,True,False,Country where sampling took place.,Unitless
+State_Island_Province_Name,Category (retained),Keep as metadata; no numeric encoding is assumed.,True,False,"State, territory (e.g., Guam), or island group (e.g., Hawaiian Islands) where sampling took place.",Unitless
+City_Town_Name,Category (retained),Keep as metadata; no numeric encoding is assumed.,True,False,"Region, city, or nearest town where sampling took place.",Unitless
+Site_Name,Category (retained),Keep as metadata; no numeric encoding is assumed.,True,False,Accepted name of the site or name given by the team that sampled the reef.,Unitless
+Distance_to_Shore,Environmental input,Numeric environmental measurement.,True,True,Distance of the sampling site from the nearest land.,Meters (m)
+Exposure,Category (retained),"Sometimes is a distinct exposure mechanism, not a midpoint on a numeric scale.",True,False,"Site exposure to fetch. A site was considered exposed if it had more than 20 km of fetch, strong seasonal winds, or faced the prevailing winds. Otherwise, it was considered sheltered or ""sometimes."" ""Sometimes"" refers to sites with more than 20 km of fetch through a narrow geographic window and therefore potentially exposed during cyclone seasons.",Unitless
+Turbidity,Environmental input,Numeric environmental measurement.,True,True,"Kd490 with a 100-km buffer. Turbidity is positively related to the diffuse attenuation coefficient of light at the 490 nm wavelength (Kd490), or the rate at which light at 490 nm is attenuated with depth. A Kd490 value of 0.1 m⁻¹ means that light intensity is reduced by one natural-log value within 10 m of water. Higher Kd490 values represent higher attenuation and higher turbidity.",Reciprocal meters (m⁻¹)
+Cyclone_Frequency,Environmental input,Numeric environmental measurement.,True,True,Number of cyclone events from 1964 to 2014.,Unitless
+Date_Day,Interpretation,Retain date or location; exclude from environmental inputs.,True,False,Day of the sampling event.,Unitless
+Date_Month,Interpretation,Retain date or location; exclude from environmental inputs.,True,False,Month of the sampling event.,Unitless
+Date_Year,Interpretation,Retain date or location; exclude from environmental inputs.,True,False,Year of the sampling event.,Unitless
+Depth_m,Environmental input,Numeric environmental measurement.,True,True,Depth of the sampling site.,Meters (m)
+Substrate_Name,Substrate detail (separate table),Multiple substrate records per event; preserve in coral_substrate_records.csv.,False,False,Type of substrate from Reef Check data.,Unitless
+Percent_Cover,Substrate detail (separate table),Multiple substrate records per event; preserve in coral_substrate_records.csv.,False,False,Average cover value.,Percent (%)
+Bleaching_Level,Category (retained),Keep as metadata; no numeric encoding is assumed.,True,False,Reef Check data indicating whether the observation refers to a coral population or coral colony.,Unitless
+Percent_Bleaching,Outcome,Retain for later interpretation; never impute or use as an input.,True,False,Average of four transect segments (Reef Check) or average of a bleaching code.,Percent (%)
+ClimSST,Environmental input,Numeric environmental measurement.,True,True,"Climatological sea surface temperature (SST) based on weekly SSTs for the study time frame, created using a harmonics approach.",Degrees Celsius (°C)
+Temperature_Kelvin,Environmental input,Numeric environmental measurement.,True,True,Temperature in Kelvin.,Kelvin (K)
+Temperature_Mean,Environmental input,Numeric environmental measurement.,True,True,Mean temperature.,Degrees Celsius (°C)
+Temperature_Minimum,Environmental input,Numeric environmental measurement.,True,True,Minimum temperature.,Degrees Celsius (°C)
+Temperature_Maximum,Environmental input,Numeric environmental measurement.,True,True,Maximum temperature.,Degrees Celsius (°C)
+Temperature_Kelvin_Standard_Deviation,Environmental input,Numeric environmental measurement.,True,True,Standard deviation of temperature.,Kelvin (K)
+Windspeed,Environmental input,Numeric environmental measurement.,True,True,Wind speed.,Meters per hour (as supplied in metadata)
+SSTA,Environmental input,Numeric environmental measurement.,True,True,Sea Surface Temperature Anomaly: weekly SST minus weekly climatological SST.,Degrees Celsius (°C)
+SSTA_Standard_Deviation,Environmental input,Numeric environmental measurement.,True,True,Standard deviation of weekly SST anomalies over the entire time period.,Degrees Celsius (°C)
+SSTA_Mean,Environmental metadata (retained),"Constant or entirely missing in the labelled cohort. Retain in original units, outside PCA inputs.",True,False,Mean SSTA over the entire time period.,Degrees Celsius (°C)
+SSTA_Minimum,Environmental input,Numeric environmental measurement.,True,True,Minimum SSTA over the entire time period.,Degrees Celsius (°C)
+SSTA_Maximum,Environmental input,Numeric environmental measurement.,True,True,Maximum SSTA over the entire time period.,Degrees Celsius (°C)
+SSTA_Frequency,Environmental input,Numeric environmental measurement.,True,True,Number of times over the previous 52 weeks that SSTA was greater than or equal to 1 °C.,SSTA per time period
+SSTA_Frequency_Standard_Deviation,Environmental input,Numeric environmental measurement.,True,True,Standard deviation of SSTA_Frequency over the entire time period.,SSTA per time period
+SSTA_FrequencyMax,Environmental input,Numeric environmental measurement.,True,True,Maximum SSTA_Frequency over the entire time period.,SSTA per time period
+SSTA_FrequencyMean,Environmental input,Numeric environmental measurement.,True,True,Mean SSTA_Frequency over the entire time period.,SSTA per time period
+SSTA_DHW,Environmental input,Numeric environmental measurement.,True,True,Sea Surface Temperature Degree Heating Weeks: sum of the previous 12 weeks when SSTA was greater than or equal to 1 °C.,Weeks
+SSTA_DHW_Standard_Deviation,Environmental input,Numeric environmental measurement.,True,True,Standard deviation of SSTA_DHW over the entire time period.,Weeks
+SSTA_DHWMax,Environmental input,Numeric environmental measurement.,True,True,Maximum SSTA_DHW over the entire time period.,Weeks
+SSTA_DHWMean,Environmental input,Numeric environmental measurement.,True,True,Mean SSTA_DHW over the entire time period.,Weeks
+TSA,Environmental input,Numeric environmental measurement.,True,True,Thermal Stress Anomaly: weekly sea surface temperature minus the maximum of weekly climatological sea surface temperature.,Degrees Celsius (°C)
+TSA_Standard_Deviation,Environmental metadata (retained),"Near-duplicate of Temperature_Kelvin_Standard_Deviation: absolute Spearman rho >= 0.999. Retain in original units, outside PCA inputs.",True,False,Standard deviation of TSA over the entire time period.,Degrees Celsius (°C)
+TSA_Minimum,Environmental input,Numeric environmental measurement.,True,True,Minimum TSA.,Degrees Celsius (°C)
+TSA_Maximum,Environmental input,Numeric environmental measurement.,True,True,Maximum TSA.,Degrees Celsius (°C)
+TSA_Mean,Environmental input,Numeric environmental measurement.,True,True,Mean TSA over the entire time period.,Degrees Celsius (°C)
+TSA_Frequency,Environmental input,Numeric environmental measurement.,True,True,Number of times over the previous 52 weeks that TSA was greater than or equal to 1 °C.,TSA per time period
+TSA_Frequency_Standard_Deviation,Environmental input,Numeric environmental measurement.,True,True,Standard deviation of frequency of thermal stress anomalies over the entire time period.,TSA per time period
+TSA_FrequencyMax,Environmental input,Numeric environmental measurement.,True,True,Maximum TSA_Frequency over the entire time period.,TSA per time period
+TSA_FrequencyMean,Environmental input,Numeric environmental measurement.,True,True,Mean TSA_Frequency over the entire time period.,TSA per time period
+TSA_DHW,Environmental input,Numeric environmental measurement.,True,True,Thermal Stress Anomaly (TSA) Degree Heating Weeks: sum of the previous 12 weeks when TSA was greater than or equal to 1 °C.,Weeks
+TSA_DHW_Standard_Deviation,Environmental input,Numeric environmental measurement.,True,True,Standard deviation of TSA_DHW over the entire time period.,Weeks
+TSA_DHWMax,Environmental input,Numeric environmental measurement.,True,True,Maximum TSA_DHW over the entire time period.,Weeks
+TSA_DHWMean,Environmental input,Numeric environmental measurement.,True,True,Mean TSA_DHW over the entire time period.,Weeks
+Date,Interpretation,Retain date or location; exclude from environmental inputs.,True,False,Date of sampling event in `YYYY-MM-DD` format.,Unitless
+Site_Comments,Text (retained),Keep as metadata only; bleaching comments may reveal outcome derivation.,True,False,Comments about issues with the site or additional information.,Unitless
+Sample_Comments,Text (retained),Keep as metadata only; bleaching comments may reveal outcome derivation.,True,False,Comments about issues or additional information concerning the sampling event.,Unitless
+Bleaching_Comments,Text (retained),Keep as metadata only; bleaching comments may reveal outcome derivation.,True,False,Comments about issues or additional information concerning the bleaching value.,Unitless
